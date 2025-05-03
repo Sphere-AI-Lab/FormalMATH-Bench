@@ -7,7 +7,7 @@
 ### Open-Source Links
 | datasets | paper |  code  |project |
 |:-----------------:|:----------------:|:--------------:|:--------------:|
-|[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://xxxx)|[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://xxxxxx)|xxxxx|https://formalmath-team.github.io/FormalMATH_Eval.githhub.io/
+|[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/datasets/SphereLab/FormalMATH)|[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://xxxxxx)|xxxxx|https://formalmath-team.github.io/FormalMATH_Eval.githhub.io/
 
 ## 📊 Introduction
 FormalMATH is a large-scale benchmark dataset for formal mathematical reasoning, consisting of 5,560 formally verified mathematical statements across various domains and difficulty levels in Lean4. It is designed to advance research in automated theorem proving by providing a comprehensive and reliable testbed for evaluating AI systems, and introduces a human-in-the-loop pipeline that leverages language models and automated checking to efficiently generate formalized math statements.
