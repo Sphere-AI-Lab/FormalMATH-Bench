@@ -1,0 +1,146 @@
+# FormalMATH
+
+> **[xxx 2025] FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models**.
+[Paper Link](https://xxxxxxxx)
+<p align="center"><img src="assets/performance_compare.png" width="680"/></p>
+
+### Open-Source Links
+| datasets | paper |  code  |project |
+|:-----------------:|:----------------:|:--------------:|:--------------:|
+|[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://xxxx)|[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://xxxxxx)|xxxxx|https://formalmath-team.github.io/FormalMATH_Eval.githhub.io/
+
+## 📊 Introduction
+FormalMATH is a large-scale benchmark dataset for formal mathematical reasoning, consisting of 5,560 formally verified mathematical statements across various domains and difficulty levels in Lean4. It is designed to advance research in automated theorem proving by providing a comprehensive and reliable testbed for evaluating AI systems, and introduces a human-in-the-loop pipeline that leverages language models and automated checking to efficiently generate formalized math statements.
+<p align="center"><img src="assets/domain-pie.png" width="750"/></p>
+
+## 🗼 Pipeline of FormalMATH Construction
+The FormalMATH pipeline combines fine-tuned large language models with a best-of-N sampling approach to automatically generate formal mathematical statements. It then applies a multi-step automated validation process, including compiler checking, semantic verification by multiple LLMs, logical filtering using a pre-trained prover, and final human review to ensure correctness.
+<p align="center"><img src="assets/pipeline.png" width="750"/></p>
+
+## 📰 News
+* [4/19/2025]  **Open-Sourcing datasets** For specific steps, refer to Get Started.
+* [x/xx/2025]  Our paper is accepted by xxxxx!
+* [x/xx/2025]  Our FormalMATH has already been integrated into OpenCompass!
+
+## 🏆 Prover Performance
+**Best-First Tree Search Methods**
+| Method | Sampling budget | Pass@K(%) |
+| --------- | :-------:  | :-------: |
+| BFS(DeepSeek-V1.5-RL) | $32\times32\times100$ | $17.41$ |
+| BFS(InternLM-V2.5) | $32\times32\times100$ | $25.65$ |
+| BFS(BFS-Prover) | $32\times32\times100$ | $45.88$ |
+
+**Single-Pass Generation Methods**
+| Method | Sampling budget | Pass@K(%) |
+| --------- |  :-------: | :-------: |
+| STP | $3200$ | $53.17$ |
+| DeepSeek-V1.5-SFT | $3200$ | $46.82$ |
+| DeepSeek-V1.5-SFT | $3200$ | $50.35$ |
+| Goedel-Prover | $3200$ | $49.41$ |
+
+## 📈 Star Rising
+
+## 🔧 Installation
+### Step1 : Installing Evaluation Environment on Host Machine
+- Python 3
+- Pytorch
+- Install the required dependency packages 
+```bash
+pip install -r requirements.txt
+```
+### Step2 : Installing LEAN4 & REPL Enviroment on Host Machine
+Lean installation
+```
+cd ~
+curl https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -sSf | sh
+source $HOME/.elan/env
+```
+
+REPL installation
+```
+git clone https://github.com/leanprover-community/repl.git && cd repl && git checkout adbbfcb9d4e61c12db96c45d227de92f21cc17dd
+lake build
+cd ..
+```
+
+Mathlib installation
+```
+cd ~/repl/test/Mathlib
+bash test.sh
+```
+
+
+## 🏃 Get Started
+### 📌 Core Configuration Parameters
+
+Please make sure you have correctly configured the following key parameters for generating answers, verifying answers, and evaluating results in the evaluation system.
+| Parameter | Description | Default |
+| --------- | ----------- | ------- |
+| `--generate` | Enable generation of answers. | `False` |
+| `--verify` | Enable verification of generated answers. | `False` |
+| `--evaluate` | Enable evaluation of verification results. | `False` |
+| `--input_file` | Path to the input file containing the questions. | `None` |
+| `--generated_file` | Path to the output file for generated answers. | `None` |
+| `--verification_file` | Path to the output file for verification results. | `None` |
+| `--evaluation_file` | Path to the output file for evaluation results. | `None` |
+| `--model` | Path to the model used for generating answers. | `None` |
+| `--repl_path` | Path to the REPL environment. | `None` |
+| `--lean_env_path` | Path to the Mathlib4 environment. | `None` |
+| `--n` | Number of answers to generate per process. | `1` |
+| `--nums_answer` | Number of answers to generate per question. | `1` |
+| `--num_batches` | Number of processes to verify answers per question. | `1` |
+
+For more personalized parameter settings, please refer to `FoMA_Eval.py.`
+
+Note: If you meet the error "RuntimeError: Aborted due to the lack of CPU swap space. Please increase the swap space to avoid this error.", try reduce parameter 'n'.
+### 📌 Quick Evaluation
+If you want to directly obtain the test results of the model from FomalMATH, we provide a one-time testing tool `FoMA_Eval.py`. Please run the following:
+```bash
+# Make sure to include --generate --verify --evaluate to accomplish all tasks.
+python FoMA_Eval.py --generate --verify --evaluate \
+    --input_file your_datasets_path \
+    --generated_file your_generated_file_path \
+    --verification_file your_verify_file_path \
+    --evaluation_file your_evalute_file_path \
+    --model your_model_path \
+    --repl_path your_repl_path \
+    --lean_env_path your_mathlib_path \
+    --n 200 \
+    --nums_answer 3200 \
+    --num_batches 128 
+```
+### 📌 Detailed Evaluation
+`FoMA_Eval.py` can independently perform generation, verification, and evaluation tasks. It can also save intermediate results to meet the needs of different downstream tasks. Please refer to the following instructions for details:
+
+- If you only want to generate answers, please run the following:
+```bash
+python generate_answers.py --generate \
+    --input_file your_datasets_path \
+    --output_file your_generated_file_path \
+    --model your_model_path \
+    --n 200 \
+    --nums_answer 3200 
+```
+- If you only want to verify the generated answers, please run the following:
+```bash
+python lean_proof_pipeline.py --verify \
+    --generated_file your_generated_file_path \
+    --verification_file your_verify_file_path \
+    --num_batches 128 \
+    --expect_timeout 120 
+```
+- If you only want to evaluate verify result, please run the following:
+```bash
+python evaluate_results.py --generate \
+    --verification_file your_verify_file_path \
+    --evaluation_file your_evalute_file_path 
+```
+## 📋 Citation
+If you find our project interesting, please cite us 😊
+```bibtex
+
+```
+
+
+
+
