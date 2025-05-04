@@ -34,29 +34,11 @@ def parse_args():
                         help="Number of answers to generate per process via vllm.")
     parser.add_argument("--nums_answer", type=int, default=3200,
                         help="Number of answers to generate per question.")
-    # parser.add_argument("--model_path", default=None,
-    #                     help="Path to the model used for generating answers")
-    # parser.add_argument("--base_url", default=None, 
-    #                    help="Base URL for the API")
-    # parser.add_argument("--api_port", default=None, type=int,
-    #                     help="Port for the answer generation API server")
-    # parser.add_argument("--num_answers", default=3200, type=int,
-    #                     help="Number of answers to generate for each theorem")
-    # parser.add_argument("--num_processes", default=96, type=int,
-    #                     help="Number of processes used for answer generation")
-    # parser.add_argument("--batch_size", default=32, type=int,
-    #                     help="Batch size for answer generation")
-    # parser.add_argument("--save_interval", default=16, type=int,
-    #                     help="Save interval during answer generation")
-    # parser.add_argument("--resume", action="store_true", default=True,
-    #                     help="Resume answer generation from the last checkpoint")
-    # parser.add_argument("--mode", choices=["vanilla", "nat", "cot"], default=None,
-    #                     help="Choose the model mode (vanilla/nat/cot)")
-    
+
     # Verification parameters
-    parser.add_argument("--repl_path", default=None,
+    parser.add_argument("--repl_path", default="./repl",
                         help="Path to the Lean REPL used for verification")
-    parser.add_argument("--lean_env_path", default=None,
+    parser.add_argument("--lean_env_path", default="./repl/test/Mathlib",
                         help="Path to the Lean environment used for verification")
     parser.add_argument("--num_batches", default=32, type=int,
                         help="Number of parallel batches for verification")

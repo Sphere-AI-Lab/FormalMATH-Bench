@@ -29,7 +29,7 @@ def init_worker(model_path, gpu_id):
 def process_single_item(item, sampling_params, num_batches):
     """Process a single data item"""
     global model
-
+    item['autoformalization'] = "\nComplete the following Lean 4 code:\n```lean4\n"+item['autoformalization']
     prompt = item['autoformalization']
     try:
         all_answers = []

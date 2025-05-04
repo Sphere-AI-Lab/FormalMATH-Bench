@@ -1,14 +1,15 @@
 # FormalMATH
 
-> **[xxx 2025] FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models**.
+>  **[Arxiv] FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models**.
 [Paper Link](https://xxxxxxxx)
 <p align="center"><img src="assets/performance_compare.png" width="680"/></p>
 
 ### Open-Source Links
-| datasets | paper |  code  |project |
-|:-----------------:|:----------------:|:--------------:|:--------------:|
-|[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/datasets/SphereLab/FormalMATH)|[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://xxxxxx)|xxxxx|https://formalmath-team.github.io/FormalMATH_Eval.githhub.io/
 
+
+| Datasets | Paper | Project Page |
+ |:-----------------:|:----------------:|:--------------:|
+ |[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/datasets/SphereLab/FormalMATH)|[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://xxxxxx)|<a href="https://sphere-ai-lab.github.io/FormalMATH/"><img src="assets/logo.png" alt="Project Page" width="70"></a>|
 ## 📊 Introduction
 FormalMATH is a large-scale benchmark dataset for formal mathematical reasoning, consisting of 5,560 formally verified mathematical statements across various domains and difficulty levels in Lean4. It is designed to advance research in automated theorem proving by providing a comprehensive and reliable testbed for evaluating AI systems, and introduces a human-in-the-loop pipeline that leverages language models and automated checking to efficiently generate formalized math statements.
 <p align="center"><img src="assets/domain-pie.png" width="750"/></p>
@@ -18,11 +19,11 @@ The FormalMATH pipeline combines fine-tuned large language models with a best-of
 <p align="center"><img src="assets/pipeline.png" width="750"/></p>
 
 ## 📰 News
-* [4/19/2025]  **Open-Sourcing datasets** For specific steps, refer to Get Started.
-* [x/xx/2025]  Our paper is accepted by xxxxx!
-* [x/xx/2025]  Our FormalMATH has already been integrated into OpenCompass!
+* [5/04/2025]  **Open-Sourcing datasets** For specific steps, refer to Get Started.
 
 ## 🏆 Prover Performance
+Performance comparison of theorem prover LLMs on **FormalMATH-Lite**.
+
 **Best-First Tree Search Methods**
 | Method | Sampling budget | Pass@K(%) |
 | --------- | :-------:  | :-------: |
@@ -33,6 +34,7 @@ The FormalMATH pipeline combines fine-tuned large language models with a best-of
 **Single-Pass Generation Methods**
 | Method | Sampling budget | Pass@K(%) |
 | --------- |  :-------: | :-------: |
+| Kimina-Prover-7B | $32$ | $48.94$ |
 | STP | $3200$ | $53.17$ |
 | DeepSeek-V1.5-SFT | $3200$ | $46.82$ |
 | DeepSeek-V1.5-SFT | $3200$ | $50.35$ |
@@ -84,8 +86,8 @@ Please make sure you have correctly configured the following key parameters for 
 | `--verification_file` | Path to the output file for verification results. | `None` |
 | `--evaluation_file` | Path to the output file for evaluation results. | `None` |
 | `--model` | Path to the model used for generating answers. | `None` |
-| `--repl_path` | Path to the REPL environment. | `None` |
-| `--lean_env_path` | Path to the Mathlib4 environment. | `None` |
+| `--repl_path` | Path to the REPL environment. | `./repl` |
+| `--lean_env_path` | Path to the Mathlib4 environment. | `./repl/test/Mathlib` |
 | `--n` | Number of answers to generate per process. | `1` |
 | `--nums_answer` | Number of answers to generate per question. | `1` |
 | `--num_batches` | Number of processes to verify answers per question. | `1` |
