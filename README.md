@@ -78,6 +78,8 @@ bash test.sh
 Please make sure you have correctly configured the following key parameters for generating answers, verifying answers, and evaluating results in the evaluation system.
 | Parameter | Description | Default |
 | --------- | ----------- | ------- |
+| `--auto_dl` | Automatically download dataset. | `True` |
+| `--datasets` | Choose dataset version: FomaMATH-All or FomaMATH-Lite. | `FomaMATH-All` |
 | `--generate` | Enable generation of answers. | `False` |
 | `--verify` | Enable verification of generated answers. | `False` |
 | `--evaluate` | Enable evaluation of verification results. | `False` |
@@ -94,11 +96,23 @@ Please make sure you have correctly configured the following key parameters for 
 
 For more personalized parameter settings, please refer to `FoMA_Eval.py.`
 
-Note: If you meet the error "RuntimeError: Aborted due to the lack of CPU swap space. Please increase the swap space to avoid this error.", try reduce parameter 'n'.
+
+Note 1: Note that if `args.auto_dl` is `true`, it will automatically download the dataset to `./data` by default, and automatically preset the paths for `args.input_file`, `args.generated_file`, `args.verification_file`, and `args.evaluation_file`. If you want to customize the paths, please set this parameter to `False`.
+ 
+Note 2: If you meet the error `"RuntimeError: Aborted due to the lack of CPU swap space. Please increase the swap space to avoid this error."`, try reduce parameter `args.n`.
+
 ### 📌 Quick Evaluation
 If you want to directly obtain the test results of the model from FomalMATH, we provide a one-time testing tool `FoMA_Eval.py`. Please run the following:
 ```bash
-# Make sure to include --generate --verify --evaluate to accomplish all tasks.
+# If you want to automatically download the dataset FomaMATH-All
+ python FoMA_Eval.py --auto_dl --generate --verify --evaluate \
+     --datasets FomaMATH-All \
+     --model your_model_path \
+     --n 32 \
+     --nums_answer 32 \
+     --num_batches 1
+ 
+ # If you want to customize file paths 
 python FoMA_Eval.py --generate --verify --evaluate \
     --input_file your_datasets_path \
     --generated_file your_generated_file_path \

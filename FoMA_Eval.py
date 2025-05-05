@@ -20,15 +20,19 @@ def parse_args():
                         help="Path to the output file containing evaluation results")
     
     # Task control
+    parser.add_argument("--auto_dl", action="store_true", default=True,
+                        help="Automatically download dataset")
     parser.add_argument("--generate", action="store_true", default=False,
                         help="Enable generation of answers")
     parser.add_argument("--verify", action="store_true", default=False,
                         help="Enable verification of generated answers")
     parser.add_argument("--evaluate", action="store_true", default=False,
                         help="Enable evaluation of verification results")
-    
+    parser.add_argument("--datasets", default="FomaMATH-All",
+                        help="Choose dataset version: FomaMATH-All or FomaMATH-Lite")
+
     # Generation parameters - Add all parameters from the first script
-    parser.add_argument("--model", default="/map-vepfs/keyi/model/DeepSeek-Prover-V1.5-SFT",
+    parser.add_argument("--model", default=None,
                         help="Path to the model used for generating answers.")
     parser.add_argument("--n", type=int, default=200,
                         help="Number of answers to generate per process via vllm.")
@@ -68,22 +72,39 @@ def main():
         print("Please select at least one task (--generate, --verify, or --evaluate)")
         return
     
+    # Step 0: Download datasets
+    if args.auto_dl:
+        from datasets import load_dataset
+        
+        if args.datasets == "FomaMATH-All":
+            input_dataset_id = "SphereLab/FormalMATH-All"
+        elif args.datasets == "FomaMATH-Lite":
+            input_dataset_id = "SphereLab/FormalMATH-Lite"
+        else:
+            raise ValueError(f"Unknown dataset: {args.datasets}")
+
+        input_dataset_branch = "main"
+        local_dataset_path = "./data/"
+        
+        os.makedirs(local_dataset_path, exist_ok=True)
+        
+        try:
+            args.input_file = os.path.join(local_dataset_path, "FomaMATH.json")
+            args.generated_file = os.path.join(local_dataset_path, "FomaMATH_generated.json")
+            args.verification_file = os.path.join(local_dataset_path, "FomaMATH_verification.json")
+            args.evaluation_file = os.path.join(local_dataset_path, "FomaMATH_evaluation.json")
+            
+            ds = load_dataset(input_dataset_id, split="train", revision=input_dataset_branch)
+            ds.to_json(args.input_file)
+            print(f"Dataset has been saved to: {local_dataset_path}")
+            
+        except Exception as e:
+            print(f"Error occurred while downloading dataset: {e}")
+
     # Step 1: Generate answers
     if args.generate:
         try:
             print(f"Generating answers using model {args.model}")
-            # process_data(
-            #     model_path=args.model_path,
-            #     input_file=args.input_file,
-            #     output_file=args.generated_file,
-            #     api_port=args.api_port,
-            #     num_processes=args.num_processes,
-            #     batch_size=args.batch_size,
-            #     save_interval=args.save_interval,
-            #     resume=args.resume,
-            #     mode=args.mode,
-            #     num_answers=args.num_answers
-            # )
             process_data(
                 model_path=args.model,
                 input_file=args.input_file,
@@ -151,7 +172,7 @@ def main():
             logging.error(f"Error during evaluation: {e}")
             return
     
-    print("All requested tasks have been completed successfully!")
+    print(f"All requested tasks have been completed successfully! You can check your successful rate in {args.evaluation_file}")
 
 if __name__ == "__main__":
     main()
