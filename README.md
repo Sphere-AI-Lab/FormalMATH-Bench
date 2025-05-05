@@ -9,7 +9,7 @@
 
 | Datasets | Paper | Project Page |
  |:-----------------:|:----------------:|:--------------:|
- |[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/SphereLab)|[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://xxxxxx)|<a href="https://sphere-ai-lab.github.io/FormalMATH/"><img src="assets/logo.png" alt="Project Page" width="70"></a>|
+ |[![Hugging Face Spaces](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Spaces-blue)](https://huggingface.co/SphereLab)|[![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://github.com/Sphere-AI-Lab/FormalMATH-Bench/blob/main/assets/FormalMATH.pdf)|<a href="https://sphere-ai-lab.github.io/FormalMATH/"><img src="assets/logo.png" alt="Project Page" width="70"></a>|
 ## 📊 Introduction
 FormalMATH is a large-scale benchmark dataset for formal mathematical reasoning, consisting of 5,560 formally verified mathematical statements across various domains and difficulty levels in Lean4. It is designed to advance research in automated theorem proving by providing a comprehensive and reliable testbed for evaluating AI systems, and introduces a human-in-the-loop pipeline that leverages language models and automated checking to efficiently generate formalized math statements.
 <p align="center"><img src="assets/domain-pie.png" width="750"/></p>
@@ -140,7 +140,13 @@ python evaluate_results.py --generate \
 ## 📋 Citation
 If you find our project interesting, please cite us 😊
 ```bibtex
-
+@misc{FormalMATH2025,
+  title={FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models},
+  author={Zhouliang Yu and Ruotian Peng and Keyi Ding and Yizhe Li and Zhongyuan Peng and Minghao Liu and Yifan Zhang and Zheng Yuan and Huajian Xin and Wenhao Huang and Yandong Wen and Ge Zhang and Weiyang Liu},
+  year={2025},
+  howpublished={\url{https://github.com/Sphere-AI-Lab/FormalMATH-Bench}},
+  note={GitHub}
+}
 ```
 
 
