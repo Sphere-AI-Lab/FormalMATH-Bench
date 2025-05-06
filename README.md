@@ -42,7 +42,7 @@ Performance comparison of theorem prover LLMs on **FormalMATH-Lite**.
 
 ## 📈 Star Rising
 
-[![Star History Chart](https://api.star-history.com/svg?repos=Sphere-AI-Lab/FormalMATH-Bench&type=Date)](https://www.star-history.com/#Sphere-AI-Lab/FormalMATH-Bench&Date)
+<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://www.star-history.com/embed?secret=Z2hwXzhETWhyanBBaWh5VE40MFJWRXpKeVRiYldvMEsybDFoRWNxYQ==#Sphere-AI-Lab/FormalMATH-Bench&Date" frameBorder="0"></iframe>
 
 ## 🔧 Installation
 ### Step1 : Installing Evaluation Environment on Host Machine
