@@ -10,7 +10,7 @@ import argparse
 import math
 from multiprocessing import Pool, cpu_count, Manager
 from pathlib import Path
-
+import jsonlines
 def init_worker(model_path, gpu_id):
     """Initialize worker process, set GPU environment, and initialize the model"""
     os.environ["CUDA_VISIBLE_DEVICES"] = str(gpu_id)
@@ -157,8 +157,10 @@ def process_data(
     
     # Read data
     print(f"Reading data from {input_file}...")
-    with open(input_file, 'r') as file:
-        data = json.load(file)
+    data = []
+    with jsonlines.open(input_file) as reader:
+        for obj in reader:
+            data.append(obj)
     
     # Calculate num_batches
     n = batch_size  # Use batch_size as 'n'
