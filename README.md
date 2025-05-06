@@ -165,4 +165,4 @@ If you find our project interesting, please cite us 😊
 }
 ```
 ## 📈 Star Rising
-<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://www.star-history.com/embed?secret=Z2hwX3h1a3psWmo3Rnhzdm1kQXd4dVpsUTNsbHlmNkRreDFxSExPNg==#Sphere-AI-Lab/FormalMATH-Bench&Date" frameBorder="0"></iframe>
+[![Star History Chart](https://api.star-history.com/svg?repos=Sphere-AI-Lab/FormalMATH-Bench&type=Date)](https://www.star-history.com/#Sphere-AI-Lab/FormalMATH-Bench&Date)
