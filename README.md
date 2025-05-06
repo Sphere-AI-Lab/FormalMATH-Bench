@@ -1,7 +1,7 @@
 # FormalMATH
 
 >  **[Arxiv] FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models**.
-[Paper Link](https://xxxxxxxx)
+[Paper Link](https://arxiv.org/abs/2505.02735)
 <p align="center"><img src="assets/performance_compare.png" width="680"/></p>
 
 ### Open-Source Links
@@ -41,6 +41,8 @@ Performance comparison of theorem prover LLMs on **FormalMATH-Lite**.
 | Goedel-Prover | $3200$ | $49.41$ |
 
 ## 📈 Star Rising
+
+<p align="center"><img src="assets/star-history-202556.png" width="750"/></p>
 
 ## 🔧 Installation
 ### Step1 : Installing Evaluation Environment on Host Machine
@@ -164,7 +166,3 @@ If you find our project interesting, please cite us 😊
         url={https://arxiv.org/abs/2505.02735}, 
 }
 ```
-
-
-
-
