@@ -40,9 +40,7 @@ Performance comparison of theorem prover LLMs on **FormalMATH-Lite**.
 | DeepSeek-V1.5-SFT | $3200$ | $50.35$ |
 | Goedel-Prover | $3200$ | $49.41$ |
 
-## 📈 Star Rising
 
-<p align="center"><img src="assets/star-history-202556.png" width="750"/></p>
 
 ## 🔧 Installation
 ### Step1 : Installing Evaluation Environment on Host Machine
@@ -166,3 +164,5 @@ If you find our project interesting, please cite us 😊
         url={https://arxiv.org/abs/2505.02735}, 
 }
 ```
+## 📈 Star Rising
+[![Star History Chart](https://api.star-history.com/svg?repos=formalmath/formalmath,Sphere-AI-Lab/FormalMATH-Bench&type=Date)](https://www.star-history.com/#formalmath/formalmath&Sphere-AI-Lab/FormalMATH-Bench&Date)
