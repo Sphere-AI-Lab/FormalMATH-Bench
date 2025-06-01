@@ -22,6 +22,20 @@ The FormalMATH pipeline combines fine-tuned large language models with a best-of
 * [5/04/2025]  **Open-Sourcing datasets** For specific steps, refer to Get Started.
 
 ## 🏆 Prover Performance
+Performance comparison of theorem prover LLMs on **FormalMATH-All**.
+
+| Method | Sampling budget | Pass@K(%) |
+| --------- |  :-------: | :-------: |
+| DeepSeek-V2-671B | $32$ | $28.31$ |
+| DeepSeek-V2-7B | $32$ | $22.41$ |
+| Kimina-Prover-7B | $32$ | $16.46$ |
+| STP | $32$ | $13.87$ |
+| Goedel-Prover | $32$ | $13.53$ |
+| DeepSeek-V1.5-RL | $32$ | $10.18$ |
+| DeepSeek-V1.5-SFT | $32$ | $8.97$ |
+| InterLM-Prover | $32$ | $11.13$ |
+| BFS-Prover | $32$ | $1.16$ |
+
 Performance comparison of theorem prover LLMs on **FormalMATH-Lite**.
 
 **Best-First Tree Search Methods**
@@ -34,10 +48,10 @@ Performance comparison of theorem prover LLMs on **FormalMATH-Lite**.
 **Single-Pass Generation Methods**
 | Method | Sampling budget | Pass@K(%) |
 | --------- |  :-------: | :-------: |
-| Kimina-Prover-7B | $32$ | $48.94$ |
+| Kimina-Prover-7B | $3200$ | $48.94$ |
 | STP | $3200$ | $53.17$ |
 | DeepSeek-V1.5-SFT | $3200$ | $46.82$ |
-| DeepSeek-V1.5-SFT | $3200$ | $50.35$ |
+| DeepSeek-V1.5-RL | $3200$ | $50.35$ |
 | Goedel-Prover | $3200$ | $49.41$ |
 
 
