@@ -168,15 +168,13 @@ python evaluate_results.py --generate \
 ## 📋 Citation
 If you find our project interesting, please cite us 😊
 ```bibtex
-@misc{yu2025formalmathbenchmarkingformalmathematical,
-        title={FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models}, 
-        author={Zhouliang Yu and Ruotian Peng and Keyi Ding and Yizhe Li and Zhongyuan Peng and Minghao Liu and Yifan Zhang and Zheng Yuan and Huajian Xin and Wenhao Huang and Yandong Wen and Ge Zhang and Weiyang Liu},
-        year={2025},
-        eprint={2505.02735},
-        archivePrefix={arXiv},
-        primaryClass={cs.AI},
-        url={https://arxiv.org/abs/2505.02735}, 
-}
+  @article{yu2025formalmath,
+      title={FormalMATH: Benchmarking Formal Mathematical Reasoning of Large Language Models},
+      author={Yu, Zhouliang and Peng, Ruotian and Ding, Keyi and Li, Yizhe and Peng, Zhongyuan and Liu, Minghao 
+        and Zhang, Yifan and Zheng, Yuan and Xin, Huajian and Huang, Wenhao and Wen, Yandong and Liu, Weiyang},
+      journal={arXiv preprint arXiv:2505.02735},
+      year={2025}
+  }
 ```
 ## 📈 Star Rising
 [![Star History Chart](https://api.star-history.com/svg?repos=Sphere-AI-Lab/FormalMATH-Bench&type=Date)](https://www.star-history.com/#Sphere-AI-Lab/FormalMATH-Bench&Date)
