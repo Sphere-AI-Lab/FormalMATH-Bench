@@ -53,6 +53,9 @@ Performance comparison of theorem prover LLMs on **FormalMATH-Lite**.
 | DeepSeek-V1.5-SFT | $3200$ | $46.82$ |
 | DeepSeek-V1.5-RL | $3200$ | $50.35$ |
 | Goedel-Prover | $3200$ | $49.41$ |
+|EvolProver| $3200$ | $57.41$ |
+|DeepSeek-Prover-V2 (7B)| $3200$ | $55.06$ |
+|DeepSeek-Prover-V2 (671B)| $3200$ | $61.88$ |
 
 
 
